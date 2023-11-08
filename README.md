@@ -11,7 +11,7 @@ To save money we use this list of free Python libraries that enable us to get ne
 
 These can work well as fully-fledged news data API alternatives when used on a small scale for a limited use case:
 
-PyGoogleNews
-NewsCatcher
-Feedparser
-Newspaper3k
+- PyGoogleNews
+- NewsCatcher
+- Feedparser
+- Newspaper3k
