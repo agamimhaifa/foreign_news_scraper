@@ -35,22 +35,28 @@ country = 'il'        # Country (e.g., 'US' for United States)
 category = 'technology'  # Category (e.g., 'technology')
 
 # Fetch top headlines
-#top_headlines = newsapi.get_top_headlines(country=country, category=category)
-
+top_headlines = newsapi.get_top_headlines(country=country, category=category)
+if 'articles' in top_headlines:
+    for article in top_headlines['articles']:
+        print(f"Title: {article['title']}")
+        print(f"URL: {article['url']}")
+        print("\n")
+else:
+    print("No articles found")
 
 # Set your parameters for the news query
 query = 'Gaza'  # Search query for "Middle East"
 language = 'en'        # Language (e.g., 'en' for English)
-source = 'al-jazeera-english'  # News source (Al Jazeera English)
+sources = str('al-jazeera-english','abc-news')  # News source (Al Jazeera English)
 
 # Set the number of results to 10
 page_size = 10
 
 # Fetch top headlines with the specified query
-top_headlines = newsapi.get_everything(q=query, language=language, sources=source, sort_by='publishedAt', page_size=page_size)
+everything = newsapi.get_everything(q=query, language=language, sources=sources, sort_by='publishedAt', page_size=page_size)
 
 if 'articles' in top_headlines:
-    for article in top_headlines['articles']:
+    for article in everything['articles']:
         print(f"Title: {article['title']}")
         print(f"URL: {article['url']}")
         print("\n")
