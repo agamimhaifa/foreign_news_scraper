@@ -47,18 +47,19 @@ else:
 # Set your parameters for the news query
 query = 'Gaza'  # Search query for "Middle East"
 language = 'en'        # Language (e.g., 'en' for English)
-sources = str('al-jazeera-english','abc-news')  # News source (Al Jazeera English)
+sources = newsapi.get_sources()
 
-# Set the number of results to 10
-page_size = 10
+for s in sources['sources']:
+    # Set the number of results to 10
+    page_size = 10
+    source = s['id']
+    # Fetch top headlines with the specified query
+    everything = newsapi.get_everything(q=query, language=language, sources=source, sort_by='publishedAt', page_size=page_size)
 
-# Fetch top headlines with the specified query
-everything = newsapi.get_everything(q=query, language=language, sources=sources, sort_by='publishedAt', page_size=page_size)
-
-if 'articles' in top_headlines:
-    for article in everything['articles']:
-        print(f"Title: {article['title']}")
-        print(f"URL: {article['url']}")
-        print("\n")
-else:
-    print("No articles found")
+    if 'articles' in top_headlines:
+        for article in everything['articles']:
+            print(f"Title: {article['title']}")
+            print(f"URL: {article['url']}")
+            print("\n")
+    else:
+        print("No articles found")
