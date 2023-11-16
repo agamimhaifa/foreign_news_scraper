@@ -28,7 +28,12 @@ config.read("config.ini")
 
 # Setting configuration values
 api_id = config['Telegram']['api_id']
+if api_id == 'APP_ID':
+    api_id = input('enter api id (no api id was found in config file):')
+
 api_hash = config['Telegram']['api_hash']
+if api_hash == 'API_HASH':
+    api_hash = input('enter api hash (no api hash was found in config file):')
 
 api_hash = str(api_hash)
 
